@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)http://dayi.im/qlib/m/english_quiz/h?wxid=oNUJ4jl0RfNlr2k0Yu9CxQW6xTy4 -->
 <html><head lang="zh-CN"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no" name="viewport">
     <meta name="MobileOptimized" content="320">
 
     <!--bootstrap begin-->
     <link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap-theme.min.css')?>">
+    <!--link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap-theme.min.css')?>"-->
     <script src="<?=base_url('projectdefinedsrc/tiku/jquery.js')?>"></script>
     <script src="<?=base_url('projectdefinedsrc/tiku/bootstrap.min.js')?>"></script>
     <!--bootstrap end-->
@@ -19,11 +16,11 @@
       <script src="<?=base_url('projectdefinedsrc/tiku/html5shiv.js')?>"></script>
       <script src="<?=base_url('projectdefinedsrc/tiku/respond.min.js')?>"></script>
     <![endif]-->
-    <script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></script>
+    <script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></scrip>
     
     
     <!--<script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script>-->
-    <script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>
+    <!--<script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>-->
     <style type="text/css">
 
         .list-group-item-custom-focus {
@@ -75,14 +72,6 @@
     <div id="wrap">
 
         <div class="container">
-            <form id="postForm" method="get" action="http://dayi.im/qlib/m/english_quiz/h">
-                <input type="hidden" name="csrfmiddlewaretoken" value="wltXGC7xVhSysLccNr1eTOSJcc5iovxC">
-                <input id="hidden_qapackids" type="hidden" name="qapackIds">
-                <input id="hidden_wxid" type="hidden" name="wxid" value="oNUJ4jl0RfNlr2k0Yu9CxQW6xTy4">
-            </form>
-
-            <input id="hidden_subject" type="hidden" value="3">
-            <input id="hidden_qtype" type="hidden" value="1">
             <div class="list-group" id="div_choice_item">
                 <li class="list-group-item list-group-item-custom-focus">
                     
@@ -162,32 +151,7 @@
                     </div>
                 </li>
             </div>
-            <div id="div_analysis_body_block"><center><img src="<?=base_url('projectdefinedsrc/tiku/logo2.jpg')?>" width="150px" ></center><div/>
-           <!--  <div id="div_analysis_body_block" class="hidden">
-                <p>
-                </p><ul class="list-group">
-                    
-                        <li class="list-group-item list-group-item-custom-focus">
-                            <span class="label label-primary li_left">答案</span>&nbsp;&nbsp;<small class="li_right">A项，in all “总共”；<br>B项，in fact “事实上”；<br>C项，in short “总之；简言之”；<br>D项，in return “作为报答”。<br>结合语境，只有D项符合题意，故正确答案为D。</small><div class="clear"></div>
-                            <div class="clearfix"></div>
-                        </li>
-                    
-                    
-                        <li class="list-group-item list-group-item-custom-focus">
-                            <span class="label label-primary li_left">解析</span>&nbsp;&nbsp;<small class="li_right">我们给小狗们我们所能给的时间，空间和爱，狗狗们也把这些东西回报给我们。</small><div class="clear"></div>
-                            <div class="clearfix"></div>
-                        </li>
-                    
-                    
-                        <li class="list-group-item list-group-item-custom-focus">
-                            <span class="label label-primary li_left">考点</span>&nbsp;&nbsp;<small class="li_right">介词</small><div class="clear"></div>
-                            <div class="clearfix"></div>
-                        </li>
-                    
-                    
-                </ul>
-                <p></p>
-            </div> -->
+            <div id="div_analysis_body_block"><center><img src="<?=base_url('projectdefinedsrc/tiku/logo2.png')?>" width="150px" ></center><div/>
 
         </div>
 
@@ -196,15 +160,9 @@
 
 <div class="modal-footer">
     <a class="pull-left" href="javascript:void(0);">无线软件日</a>
-    <a class="brand" href="javascript:void(0);">无线网络软件平台</a>
+    <a class="brand" href="javascript:void(0);">疯狂摇一摇</a>
 </div>
 
-<div style="display:none;">
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb5ff8ce12a9f8e6e533b601c35d79a49' type='text/javascript'%3E%3C/script%3E"));
-    </script><script src="<?=base_url('projectdefinedsrc/tiku/h.js')?>" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=b5ff8ce12a9f8e6e533b601c35d79a49" target="_blank"><img border="0" src="<?=base_url('projectdefinedsrc/tiku/21.gif')?>" width="20" height="20"></a>
-</div>
 <script>
 
 function recordscore(is_right, questionid)

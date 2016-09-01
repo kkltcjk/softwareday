@@ -98,7 +98,7 @@ class Onlinetest extends CI_Controller {
         //    $result['success'] = 0;
 
         //}
-        //echo json_encode($result);
+        echo json_encode($result);
     }
 
     public function ajax_record_score()
@@ -133,7 +133,7 @@ class Onlinetest extends CI_Controller {
 
         }*/
 	//log_message('error', 'result3');
-        //echo json_encode($result);
+        echo json_encode($result);
 	//log_message('debug', "$result['success']");
 
     }

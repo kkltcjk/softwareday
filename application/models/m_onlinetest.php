@@ -56,7 +56,7 @@ class m_onlinetest extends CI_Model {
 
     function _getinrandonquestion($openid)
     {
-        $max_question_id = 60;
+        $max_question_id = 142;
         $id = rand(1,$max_question_id);
         $sql = "select * from tbl_exercise where id = ".$id;
         $query = $this->db->query($sql);

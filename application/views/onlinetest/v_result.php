@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)http://dayi.im/qlib/m/english_quiz/h?wxid=oNUJ4jl0RfNlr2k0Yu9CxQW6xTy4 -->
 <html><head lang="zh-CN"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     
@@ -8,7 +7,7 @@
 
     <!--bootstrap begin-->
     <link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap-theme.min.css')?>">
+    <!--link rel="stylesheet" href="<?=base_url('projectdefinedsrc/tiku/bootstrap-theme.min.css')?>"-->
     <script src="<?=base_url('projectdefinedsrc/tiku/jquery.js')?>"></script>
     <script src="<?=base_url('projectdefinedsrc/tiku/bootstrap.min.js')?>"></script>
     <!--bootstrap end-->
@@ -22,8 +21,8 @@
     <script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></script>
     
     
-    <script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>
+    <!--<script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>-->
     <style type="text/css">
 
         .list-group-item-custom-focus {
@@ -64,7 +63,7 @@
 <body>
 <div class="navbar navbar-inner ">
     <div class="container">
-        <a class="brand" href="http://dayi.im/qlib/m/english_quiz/h?wxid=oNUJ4jl0RfNlr2k0Yu9CxQW6xTy4#" name="top"><span><img src="<?=base_url('projectdefinedsrc/tiku/logo.png')?>"></span></a>
+        <a class="brand" href="<?=current_url()?>?openid=<?=$openid?>" name="top"><span><img src="<?=base_url('projectdefinedsrc/tiku/logo.png')?>"></span></a>
         <div class="nav-collapse collapse">
 
         </div>
@@ -100,10 +99,12 @@ function do_getgift(openid)
         if (result.success)
         {
           //window.location.reload();
+		  console.log('hello');
           $('#isgetgift').empty();
           $('#isgetgift').append('<a href="javascript:void(0)"  class="btn btn-default"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;已经领奖</a>');
-          $('#continueanswer').empty();
-
+          //$('#continueanswer').empty();
+		  $('#continueanswer1').children().attr("disabled", "disabled");
+		  $('#continueanswer2').children().attr("disabled", "disabled");
         }
         else
         {
@@ -118,14 +119,6 @@ function do_getgift(openid)
     <div id="wrap">
 
         <div class="container">
-            <form id="postForm" method="get" action="http://dayi.im/qlib/m/english_quiz/h">
-                <input type="hidden" name="csrfmiddlewaretoken" value="wltXGC7xVhSysLccNr1eTOSJcc5iovxC">
-                <input id="hidden_qapackids" type="hidden" name="qapackIds">
-                <input id="hidden_wxid" type="hidden" name="wxid" value="oNUJ4jl0RfNlr2k0Yu9CxQW6xTy4">
-            </form>
-
-            <input id="hidden_subject" type="hidden" value="3">
-            <input id="hidden_qtype" type="hidden" value="1">
             <div class="list-group" id="div_choice_item">
                 <li class="list-group-item list-group-item-custom-focus">
                     
@@ -144,7 +137,7 @@ function do_getgift(openid)
                             &nbsp;&nbsp;<strong><span name="choice_name">正确率<?=(int)($answered? (($score/$answered)*100) : 0)?>%</span>.</strong>
                         </a>
                         <a name="answer_item" class="list-group-item">
-                            &nbsp;&nbsp;<strong><span name="choice_name">战胜了<?=$pos_percent?>%的新员工</span>.</strong>
+                            &nbsp;&nbsp;<strong><span name="choice_name">战胜了<?=$pos_percent?>%的员工</span>.</strong>
                         </a>
                         <a name="answer_item" class="list-group-item">
                             &nbsp;&nbsp;<span name="choice_name">打开时间：<?=date('Y-m-d H:i:s',time())?></span>
@@ -187,11 +180,11 @@ function do_getgift(openid)
                             {
                             ?>
                             <div class="col-xs-2"></div>
-                            <div class="col-xs-4">
-                                 <a href="<?=base_url('onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;继续答题</a>
+                            <div class="col-xs-4 text-center" id="continueanswer1">
+                                 <a href="<?=base_url('onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;继续答题</a>
                             </div>
-                            <div class="col-xs-4">
-                                <a href="javascript:getgift('<?=$user_openid?>')"  class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;确认领奖</a>
+                            <div class="col-xs-4 text-center" id="continueanswer2">
+                                <a href="javascript:getgift('<?=$user_openid?>')"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;确认领奖</a>
                             </div>
                             <?php
                             }
@@ -216,12 +209,14 @@ function do_getgift(openid)
                 </li>
             </div>
             <div id="div_analysis_body_block"><center>奖项设置：<br>
-        终榜排名： <br>
-1-5名，奖励精美“正当其时”主题大礼包一套(精彩超出你的想象) <br>
-6-20名，奖励精美“正当其时”主题文化衫一件 <br>
-21-60名，奖励精美“正当其时”创意鼠标垫一个 <br>
-61-120名，奖励精美“正当其时”个性正能量水杯一只 <br>
-121-200名，奖励精美“正当其时”炫酷护腕一副 <br>
+        正确率80%以上，且 <br>
+答对3题，奖励手机支架懒人托一个，  价值8元 <br>
+答对11题，奖励精美束缚绳背包一个，价值15元 <br>
+答对21题，奖励精美运动水杯一只，  价值25元 <br>
+答对41题，奖励精美运动臂包一个，  价值45元 <br>
+答对61题，奖励精美T恤衫一件，价值60元 <br>
+答对81题，奖励大礼包一个(以上礼品全套) <br>
+答对120题，奖励终极通关礼品--无线鼠标 <br>
 </center><div/>
             <!-- <div id="div_analysis_body_block" class="hidden">
                 <p>
@@ -255,15 +250,9 @@ function do_getgift(openid)
 </div>
 
 <div class="modal-footer">
-    <a class="pull-left" href="javascript:void(0);">无线软件日</a><a class="brand" href="javascript:void(0);">无线网络软件平台</a>
+    <a class="pull-left" href="javascript:void(0);">无线软件日</a><a class="brand" href="javascript:void(0);">疯狂摇一摇</a>
 </div>
 
-<div style="display:none;">
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb5ff8ce12a9f8e6e533b601c35d79a49' type='text/javascript'%3E%3C/script%3E"));
-    </script><script src="<?=base_url('projectdefinedsrc/tiku/h.js')?>" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=b5ff8ce12a9f8e6e533b601c35d79a49" target="_blank"><img border="0" src="<?=base_url('projectdefinedsrc/tiku/21.gif')?>" width="20" height="20"></a>
-</div>
 <script>
 var isanswered = 0;
 function chooseit(openid, questionid, rightanswer, chooseid)

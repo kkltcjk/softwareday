@@ -65,7 +65,7 @@ class Wxoauth extends CI_Controller {
 		{
 			//$this->m_onlinetest->recordscore($openid, 1, 21);
 			//$this->m_onlinetest->add_user($openid);
-			log_message(error, "already get openid, openid is: ".$openid);
+			//log_message(error, "already get openid, openid is: ".$openid);
 			redirect($site_url."onlinetest/test?openid=".$openid);
 			//$this->add_user($openid);
 			//$this->m_onlinetest->add_user($openid);
@@ -109,6 +109,44 @@ class Wxoauth extends CI_Controller {
 
 				redirect($code_url);
 				//redirect("http://www.baidu.com/");
+			}
+		}
+
+	}
+	
+	public function loadtest()
+	{
+		$site_url = site_url();
+		//$site_url = "http://rjr.tuiunion.com/"; 
+		//$openid = $this->session->userdata('user_openid');
+		
+		//if($openid)
+		{
+			//$this->m_onlinetest->recordscore($openid, 1, 21);
+			//$this->m_onlinetest->add_user($openid);
+			//log_message(error, "already get openid, openid is: ".$openid);
+			//redirect($site_url."onlinetest/test?openid=".$openid);
+			//$this->add_user($openid);
+			//$this->m_onlinetest->add_user($openid);
+			
+			
+		}
+		//else
+		{
+			$openid = $this->input->get('openid');
+
+			if($openid)
+			{
+
+	            		$this->session->set_userdata('user_openid', $openid); 
+	            		$this->m_onlinetest->add_user($openid);
+						redirect($site_url."onlinetest/test?openid=".$openid);
+						
+
+			}
+			else
+			{
+				echo "error: no openid";
 			}
 		}
 
