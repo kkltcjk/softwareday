@@ -16,7 +16,7 @@
       <script src="<?=base_url('projectdefinedsrc/tiku/html5shiv.js')?>"></script>
       <script src="<?=base_url('projectdefinedsrc/tiku/respond.min.js')?>"></script>
     <![endif]-->
-    <script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></scrip>
+    <!--script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></scrip-->
     
     
     <!--<script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script>-->

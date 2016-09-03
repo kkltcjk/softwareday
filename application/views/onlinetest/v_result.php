@@ -18,11 +18,11 @@
       <script src="<?=base_url('projectdefinedsrc/tiku/html5shiv.js')?>"></script>
       <script src="<?=base_url('projectdefinedsrc/tiku/respond.min.js')?>"></script>
     <![endif]-->
-    <script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></script>
+    <!--script src="<?=base_url('projectdefinedsrc/tiku/jquery.cookie.js')?>"></script-->
     
     
-    <!--<script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>-->
+    <!--<script src="<?=base_url('projectdefinedsrc/tiku/dajaxice.core.js')?>" type="text/javascript" charset="utf-8"></script-->
+    <!--script type="text/javascript" src="<?=base_url('projectdefinedsrc/tiku/qlibquiz.js')?>" charset="UTF-8"></script>-->
     <style type="text/css">
 
         .list-group-item-custom-focus {
