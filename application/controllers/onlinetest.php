@@ -28,7 +28,7 @@ class Onlinetest extends CI_Controller {
         if ($openid)
         {
             $user = $this->m_account->query_user_info($openid);
-            if ($user['is_gift'] || $user['answered'] > 142)
+            if ($user['is_gift'] || $user['answered'] >= 142)
             {
                 $this->viewmyresult();
             }

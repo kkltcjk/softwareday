@@ -118,7 +118,7 @@ class Wxoauth extends CI_Controller {
 	{
 		$site_url = site_url();
 		//$site_url = "http://rjr.tuiunion.com/"; 
-		//$openid = $this->session->userdata('user_openid');
+		$openid = $this->session->userdata('user_openid');
 		
 		//if($openid)
 		{
@@ -133,12 +133,12 @@ class Wxoauth extends CI_Controller {
 		}
 		//else
 		{
-			$openid = $this->input->get('openid');
+			//$openid = $this->input->get('openid');
 
 			if($openid)
 			{
 
-	            		$this->session->set_userdata('user_openid', $openid); 
+	            		//$this->session->set_userdata('user_openid', $openid); 
 	            		$this->m_onlinetest->add_user($openid);
 						redirect($site_url."onlinetest/test?openid=".$openid);
 						

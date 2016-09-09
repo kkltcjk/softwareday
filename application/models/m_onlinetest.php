@@ -57,7 +57,34 @@ class m_onlinetest extends CI_Model {
     function _getinrandonquestion($openid)
     {
         $max_question_id = 142;
-        $id = rand(1,$max_question_id);
+        $id = $this->_getnorepeatedrandom($max_question_id, $openid);
+        // $ran_arr = range(1, $max_question_id);
+        // $ran_index = 0;
+        // if ( $this->session->userdata('random_array') && $this->session->userdata('random_index'))
+        // {
+        //     $ran_arr = $this->session->userdata('random_array');
+        //     $ran_index = $this->session->userdata('random_index');
+        //     log_message(error, "array is: ".$this->session->userdata('random_array'));
+        //     log_message(error, "index is: ".$this->session->userdata('random_index'));
+        // }
+        // else
+        // {
+        //     shuffle($ran_arr);
+        //     $this->session->set_userdata('random_array', $ran_arr);
+        //     $this->session->set_userdata('random_index', $ran_index);
+
+        // }
+
+        // if ( $this->session->userdata('random_index') < $max_question_id )
+        // {
+        //      $index = $this->session->userdata('random_index');
+        //      $index ++;
+        //      $this->session->set_userdata('random_index', $index); 
+        // }
+
+        // $id = $ran_arr[$ran_index];
+        
+        //$id = rand(1,$max_question_id);
         $sql = "select * from tbl_exercise where id = ".$id;
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0)
@@ -106,6 +133,47 @@ class m_onlinetest extends CI_Model {
 
         $this->db->insert('tbl_wx_account', $data);
         
+    }
+
+    function _getnorepeatedrandom($max_num, $openid)
+    {
+        $id = rand(1, $max_num);
+        $sql = "select exercise_id from tbl_user_score where user_id = '".$openid."'";
+        $query = $this->db->query($sql);
+        
+        if ($query->num_rows() == 0 || $query->num_rows() >= $max_num)
+        {
+            //log_message(error, "id is: ".(string)$id);
+            return $id;
+
+        }
+        else
+        {
+            $answered_array = array();
+            // $sql = "select exercise_id from tbl_user_score where user_id=".$openid;
+            // $query = $this->db->query($sql);
+            //$result = json_decode($query->result(), true);
+            //$answered_array[] = $query->result_array();
+            
+            foreach ($query->result_array() as $row) 
+            {
+                 $answered_array[] = $row['exercise_id'];
+            }
+
+            while (in_array($id, $answered_array))
+            {
+                if ($id < $max_num )
+                {
+                    $id++;
+                }
+                else
+                {
+                    $id = 1;
+                }
+            }
+            //log_message(error, "id is: ".(string)$id);
+            return $id;
+        }
     }
 }
 ?>
