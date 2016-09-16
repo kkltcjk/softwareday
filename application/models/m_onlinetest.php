@@ -109,50 +109,6 @@ class m_onlinetest extends CI_Model {
         }
     }
 
-    public function add_user($openid)
-    {
-	$data = array(
-//           'id' => 1,
-           'user_openid' => $openid,
-           'appid' => 10,
-           'user_unionid' => "lucky",
-           'wx_nickname' => "lucky",
-           'sex' => 0,
-           'province' => "Shanghai",
-           'city' => "Shanghai",
-           'country' => "china",
-           'headimgurl' => "lucky.com",
-           'privilege' => "lucky",
-           'language' => "chinese",
-           'last_visit_time' => "0000-00-00 00:00:00",
-           'latitude' => 30.2,
-           'longitude' => 30.2,
-           'precision' => 30.2,
-           'location_time' => "2016-08-27 00:00:00",
-           'amount' => 0,
-           'current_amount' => 0,
-           'cellphone' => "18888888888",
-           'cellphone_chk' => 0,
-           'reg_time' => "2016-08-27 00:00:00",
-           'alipay_username' => "unknown",
-           'pay_password' => "unknown",
-           'cellphone_chk_time' => "2016-08-27 00:00:00",
-           'cellphone_chk_code' => 1,
-           'score' => 0,
-           'answered' => 0,
-           'is_gift' => 0
-        );
-
-        //$this->db->insert('tbl_wx_account', $data);
-	$sql = $this->db->insert_string('tbl_wx_account', $data);
-        $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql); 
-	$this->db->query($sql);
-    }
-
-    public function rmv_user($openid)
-    {
-    }
-
     function _getnorepeatedrandom($max_num, $openid)
     {
         $id = rand(1, $max_num);

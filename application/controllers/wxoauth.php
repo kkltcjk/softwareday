@@ -46,7 +46,7 @@ class Wxoauth extends CI_Controller {
 					{	
 						$openid = $token['openid'];
 	            				$this->session->set_userdata('user_openid', $openid);
-	            				$this->m_onlinetest->add_user($openid);
+	            				$this->m_account->add_user($openid);
 						redirect($site_url."onlinetest/test?openid=".$openid);
 					}
 				}
@@ -88,7 +88,7 @@ class Wxoauth extends CI_Controller {
 			{
 
 	            		//$this->session->set_userdata('user_openid', $openid); 
-	            		$this->m_onlinetest->add_user($openid);
+	            		$this->m_account->add_user($openid);
 	            		//$this->m_onlinetest->getgift($openid, 0);
 				redirect($site_url."onlinetest/test?openid=".$openid);
 						
