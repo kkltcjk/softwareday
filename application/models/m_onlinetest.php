@@ -143,8 +143,10 @@ class m_onlinetest extends CI_Model {
            'is_gift' => 0
         );
 
-        $this->db->insert('tbl_wx_account', $data);
-        
+        //$this->db->insert('tbl_wx_account', $data);
+	$sql = $this->db->insert_string('tbl_wx_account', $data);
+        $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql); 
+	$this->db->query($sql);
     }
 
     public function rmv_user($openid)

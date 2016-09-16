@@ -108,7 +108,7 @@ INSERT INTO `tbl_exercise` (`id`, `question`, `sectionnum`, `rightanswer`, `answ
 (81,'为了避免使用其他模块的全局变量，可将全局变量直接定义在头文件中',2,2,'对','错','',''),
 (82,'代码是用来给机器执行的，所以程序员不用关心代码是否简洁',2,2,'对','错','',''),
 (83,'无线编程大赛每个队队员有几名？',4,3,'1','2','3','4'),
-(84,'2016年无线编程大赛决赛举办城市是哪个？',4,4,'成都','上海','西安','深圳'),
+(84,'2016年无线编程大赛决赛举办城市是哪个？',4,2,'成都','上海','西安','深圳'),
 (85,'2016年无线软件日新增加的活动是哪个？',4,3,'积分活动','无线编程大赛','CoderTalk','疯狂摇一摇'),
 (86,'用二分法查找一个长度为10的、排好序的线性表，查找不成功时，最多需要比较（）次。',4,3,'5','2','4','1'),
 (87,'无线编程大赛决赛举办地放在上一年比赛冠军所属地',2,1,'对','错','',''),
@@ -201,7 +201,8 @@ CREATE TABLE `tbl_wx_account` (
   `cellphone_chk_code` int(10) NOT NULL COMMENT '用户手机号验证码',
   `score` int(11) NOT NULL DEFAULT '0',
   `answered` int(11) NOT NULL DEFAULT '0',
-  `is_gift` int(11) NOT NULL DEFAULT '0'
+  `is_gift` int(11) NOT NULL DEFAULT '0',
+  UNIQUE KEY (user_openid)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
