@@ -21,14 +21,21 @@ class m_onlinetest extends CI_Model {
            'score' => $isright
         );
 
-        $this->db->insert('tbl_user_score', $data); 
-        $this->_counttotalscore($openid);
+        $sql = "select * from tbl_user_score where user_id = '".$openid."' and exercise_id = '".$questionid."'";
+        $query = $this->db->query($sql);
+	if($query->num_rows() == 0)
+	{
+        	$this->db->insert('tbl_user_score', $data); 
+        	//$this->_counttotalscore($openid);
+		return 'ok';
+	}
+	return "answered";
     }
 
-    public function getgift($openid)
+    public function getgift($openid, $gift=1)
     {
         $data = array(
-            'is_gift' => 1
+            'is_gift' => $gift
         );
         // echo $user_openid;
         $this->db->where('user_openid',$openid);
@@ -37,19 +44,24 @@ class m_onlinetest extends CI_Model {
 
     function _counttotalscore($openid)
     {
-        $sql = "select * from tbl_user_score where user_id = '".$openid."' and score <> 0";
+        $sql = "select * from tbl_user_score where user_id = '".$openid."'";
         $query = $this->db->query($sql);
-        $total_score = $query->num_rows();
+        $total_answered = $query->num_rows();
 
-        $sql2 = "select * from tbl_user_score where user_id = '".$openid."'";
-        $query2 = $this->db->query($sql2);
-        $total_answered = $query2->num_rows();
+	$total_score = 0;
+        foreach ($query->result_array() as $row) 
+        {
+            if($row['score'] == 1)
+	    {
+		$total_score++;
+            }
+        }
 
         $data = array(
                 'score' => $total_score,
                 'answered' => $total_answered
             );
-        // echo $user_openid;
+
         $this->db->where('user_openid',$openid);
         $this->db->update('tbl_wx_account',$data);
     }
@@ -133,6 +145,10 @@ class m_onlinetest extends CI_Model {
 
         $this->db->insert('tbl_wx_account', $data);
         
+    }
+
+    public function rmv_user($openid)
+    {
     }
 
     function _getnorepeatedrandom($max_num, $openid)

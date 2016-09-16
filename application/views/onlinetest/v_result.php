@@ -99,7 +99,6 @@ function do_getgift(openid)
         if (result.success)
         {
           //window.location.reload();
-		  console.log('hello');
           $('#isgetgift').empty();
           $('#isgetgift').append('<a href="javascript:void(0)"  class="btn btn-default"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;已经领奖</a>');
           //$('#continueanswer').empty();

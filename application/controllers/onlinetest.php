@@ -10,21 +10,11 @@ class Onlinetest extends CI_Controller {
         $this->load->library('form_validation');
     }
     
-    public function test($id = 0)
+    public function test()
     {
-        $openid = $this->input->get('openid');
+        $openid = $this->session->userdata('user_openid');
+        //$openid = $this->input->get('openid');
 
-        
-        //if($openid)
-        //{
-        //    $this->session->set_userdata('user_openid', $openid); 
-        //}
-        // else
-        // {
-        //     TM_auth_save_user_openid_to_session('userinfo',3);
-        // }
-        
-        //$openid = $this->session->userdata('user_openid');
         if ($openid)
         {
             $user = $this->m_account->query_user_info($openid);
@@ -44,22 +34,23 @@ class Onlinetest extends CI_Controller {
                 }
                 else
                 {
-                    //echo "fafda";die();
                     show_404();
                 }
             }
         }
         else
         {
-        	show_404();
+        	show_error("Only works in wechat client", 403, "403 Forbidden");
         }
     }
 
     public function viewmyresult()
     {
-    	$openid = $this->input->get('openid');
+        $openid = $this->session->userdata('user_openid');
+        //$openid = $this->input->get('openid');
     	if ($openid)
     	{
+            $this->m_onlinetest->_counttotalscore($openid);
             $user = $this->m_account->query_user_info($openid);
             $list_pos = $this->m_account->query_user_answer_info_list($openid);
             $user['pos'] = $list_pos['my_pos'];
@@ -74,7 +65,7 @@ class Onlinetest extends CI_Controller {
     	}
     	else
     	{
-             show_404();
+             show_error("Only works in wechat client", 403, "403 Forbidden");
     	}
     }
     
@@ -103,13 +94,11 @@ class Onlinetest extends CI_Controller {
 
     public function ajax_record_score()
     {
-	//log_message('error', 'result0');
         $this->form_validation->set_rules('openid', 'Openid', 'trim|required|xss_clean');
         $this->form_validation->set_rules('isright', 'Isright', 'trim|required|xss_clean');
         $this->form_validation->set_rules('questionid', 'Questionid', 'trim|required|xss_clean');
       
 	$post_data = $this->input->post();
-	//log_message('error', 'result1');
 
         //if ($this->form_validation->run())
         //{
@@ -121,8 +110,16 @@ class Onlinetest extends CI_Controller {
         $openid = $post_data['openid'];
         $isright =  $post_data['isright'];
         $questionid = $post_data['questionid'];
-        $this->m_onlinetest->recordscore($openid, $isright, $questionid);
-        $result['success'] = 1;
+        $ret = $this->m_onlinetest->recordscore($openid, $isright, $questionid);
+	if($ret == "ok")
+	{
+            $result['success'] = 1;
+        }
+	else
+	{
+            $result['success'] = 2;
+        }
+	
 
 
         //}
