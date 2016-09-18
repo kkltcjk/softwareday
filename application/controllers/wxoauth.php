@@ -16,45 +16,6 @@ class Wxoauth extends CI_Controller {
         $this->load->library('form_validation');
 	}
 
-//`id`, `user_openid`, `appid`, `user_unionid`, `wx_nickname`, `sex`, `province`, `city`, `country`, `headimgurl`, `privilege`, `language`, `last_visit_time`, `latitude`, `longitude`, `precision`, `location_time`, `amount`, `current_amount`, `cellphone`, `cellphone_chk`, `reg_time`, `alipay_username`, `pay_password`, `cellphone_chk_time`, `cellphone_chk_code`, `score`, `answered`, `is_gift`
-	// public function add_user($openid)
-	// {
-	// 	$data = array(
- //           'id' => 1,
- //           'user_openid' => $openid,
- //           'appid' => 10,
- //           'user_unionid' => "lucky",
- //           'wx_nickname' => "lucky",
- //           'sex' => 0,
- //           'province' => "Shanghai",
- //           'city' => "Shanghai",
- //           'country' => "China",
- //           'headimgurl' => "lucky.com",
- //           'privilege' => "lucky",
- //           'language' => "Chinese",
- //           'last_visit_time' => "0000-00-00 00:00:00",
- //           'latitude' => 30.2,
- //           'longitude' => 30.2,
- //           'precision' => 30.2,
- //           'location_time' => "2016-08-27 00:00:00",
- //           'amount' => 0,
- //           'current_amount' => 0,
- //           'cellphone' => "18888888888",
- //           'cellphone_chk' => 0,
- //           'reg_time' => "2016-08-27 00:00:00",
- //           'alipay_username' => "unknown",
- //           'pay_password' => "unknown",
- //           'cellphone_chk_time' => "2016-08-27 00:00:00",
- //           'cellphone_chk_code' => 1,
- //           'score' => 0,
- //           'answered' => 0,
- //           'is_gift' => 0
- //        );
-
- //        $this->db->insert('tbl_wx_account', $data);
-        
-	// }
-
 	public function index()
 	{
 		//$site_url = site_url();
@@ -63,14 +24,7 @@ class Wxoauth extends CI_Controller {
 		
 		if($openid)
 		{
-			//$this->m_onlinetest->recordscore($openid, 1, 21);
-			//$this->m_onlinetest->add_user($openid);
-			//log_message(error, "already get openid, openid is: ".$openid);
 			redirect($site_url."onlinetest/test?openid=".$openid);
-			//$this->add_user($openid);
-			//$this->m_onlinetest->add_user($openid);
-			
-			
 		}
 		else
 		{
@@ -91,12 +45,9 @@ class Wxoauth extends CI_Controller {
 					else
 					{	
 						$openid = $token['openid'];
-	            		$this->session->set_userdata('user_openid', $openid);
-	            		//$this->add_user($openid); 
-	            		$this->m_onlinetest->add_user($openid);
-	            		//$this->m_onlinetest->recordscore($openid, 1, 21);
+	            				$this->session->set_userdata('user_openid', $openid);
+	            				$this->m_account->add_user($openid);
 						redirect($site_url."onlinetest/test?openid=".$openid);
-						log_message(error, "openid is: ".$openid);
 					}
 				}
 				else
@@ -104,11 +55,9 @@ class Wxoauth extends CI_Controller {
 			}
 			else
 			{
-				//$redirect_uri = urlencode((current_url());
 				$code_url = self::API_CODE_GET."appid=".self::APPID."&redirect_uri="."http%3A%2F%2Frjr.tuiunion.com%2Fwxoauth%2Findex"."&response_type=code&scope=".self::SCOPE."&state=1#wechat_redirect";
 
 				redirect($code_url);
-				//redirect("http://www.baidu.com/");
 			}
 		}
 
@@ -139,8 +88,9 @@ class Wxoauth extends CI_Controller {
 			{
 
 	            		//$this->session->set_userdata('user_openid', $openid); 
-	            		$this->m_onlinetest->add_user($openid);
-						redirect($site_url."onlinetest/test?openid=".$openid);
+	            		$this->m_account->add_user($openid);
+	            		//$this->m_onlinetest->getgift($openid, 0);
+				redirect($site_url."onlinetest/test?openid=".$openid);
 						
 
 			}

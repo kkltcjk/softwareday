@@ -182,9 +182,16 @@ function recordscore(is_right, questionid)
 
       success: function(result){
         
-        if (result.success)
+        if (result.success == 1)
         {
            //window.location.reload();
+        }
+        else if (result.success == 2)
+        {
+    	    if (confirm('This question has answered, try the next?'))
+	    {
+           	window.location.reload();
+            }
         }
         else
         {
