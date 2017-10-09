@@ -112,6 +112,7 @@ class m_onlinetest extends CI_Model {
     function _getnorepeatedrandom($max_num, $openid)
     {
         $id = rand(1, $max_num);
+        // return $id;
         $sql = "select exercise_id from tbl_user_score where user_id = '".$openid."'";
         $query = $this->db->query($sql);
         

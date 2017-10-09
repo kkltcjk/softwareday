@@ -181,6 +181,7 @@ function recordscore(is_right, questionid)
       error: function(data,e){},
 
       success: function(result){
+        alert(result.success);
         
         if (result.success == 1)
         {

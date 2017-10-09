@@ -19,12 +19,13 @@ class Wxoauth extends CI_Controller {
 	public function index()
 	{
 		//$site_url = site_url();
-		$site_url = "http://rjr.tuiunion.com/"; 
+		$site_url = "http://lru64.cn/"; 
 		$openid = $this->session->userdata('user_openid');
 		
 		if($openid)
 		{
 			redirect($site_url."onlinetest/test?openid=".$openid);
+			// redirect($site_url);
 		}
 		else
 		{
@@ -48,6 +49,7 @@ class Wxoauth extends CI_Controller {
 	            				$this->session->set_userdata('user_openid', $openid);
 	            				$this->m_account->add_user($openid);
 						redirect($site_url."onlinetest/test?openid=".$openid);
+						// redirect($site_url);
 					}
 				}
 				else
@@ -55,7 +57,7 @@ class Wxoauth extends CI_Controller {
 			}
 			else
 			{
-				$code_url = self::API_CODE_GET."appid=".self::APPID."&redirect_uri="."http%3A%2F%2Frjr.tuiunion.com%2Fwxoauth%2Findex"."&response_type=code&scope=".self::SCOPE."&state=1#wechat_redirect";
+				$code_url = self::API_CODE_GET."appid=".self::APPID."&redirect_uri="."http%3A%2F%2Flru64.cn%2Fwxoauth%2Findex"."&response_type=code&scope=".self::SCOPE."&state=1#wechat_redirect";
 
 				redirect($code_url);
 			}

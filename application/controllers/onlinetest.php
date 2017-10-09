@@ -24,8 +24,8 @@ class Onlinetest extends CI_Controller {
             }
             else
             {
-		$question = $this->m_onlinetest->getradonquestion($openid);
-        $sess_answered = $this->m_account->query_user_info($openid);
+		        $question = $this->m_onlinetest->getradonquestion($openid);
+                $sess_answered = $this->m_account->query_user_info($openid);
                 if ($question)
                 {
             	    $question['openid'] = $openid;
@@ -53,6 +53,7 @@ class Onlinetest extends CI_Controller {
             $this->m_onlinetest->_counttotalscore($openid);
             $user = $this->m_account->query_user_info($openid);
             $list_pos = $this->m_account->query_user_answer_info_list($openid);
+            log_message("error", $user);
             $user['pos'] = $list_pos['my_pos'];
             if ($list_pos['my_pos'] > $list_pos['total_count'])
             {
@@ -111,12 +112,12 @@ class Onlinetest extends CI_Controller {
         $isright =  $post_data['isright'];
         $questionid = $post_data['questionid'];
         $ret = $this->m_onlinetest->recordscore($openid, $isright, $questionid);
-	if($ret == "ok")
-	{
+        if($ret == "ok")
+        {
             $result['success'] = 1;
         }
-	else
-	{
+        else
+        {
             $result['success'] = 2;
         }
 	
