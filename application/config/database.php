@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'hdm317309441.my3w.com';
-$db['default']['username'] = 'hdm317309441';
-$db['default']['password'] = 'Huawei123';
-$db['default']['database'] = 'hdm317309441_db';
+$db['default']['hostname'] = '127.0.0.1';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'Huawei@123';
+$db['default']['database'] = 'ruanjianri';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;

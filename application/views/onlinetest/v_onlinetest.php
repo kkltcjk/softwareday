@@ -56,7 +56,7 @@
             WeixinJSBridge.call('hideOptionMenu');
         });
     </script>
-    <title>无线软件日</title>
+    <title>上研软件风云汇</title>
 </head>
 <body>
 <div class="navbar navbar-inner ">
@@ -126,12 +126,12 @@
                         <div class="col-xs-2"></div>
                         <!--div class="col-xs-4"-->
                         <div class="col-xs-4 text-center">
-			    <a href="<?=base_url('onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;下一题</a>
+			    <a href="<?=base_url('index.php/onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;下一题</a>
                         </div>
                         
                         <!--div class="col-xs-4"-->
                         <div class="col-xs-4 text-center">
-                <a href="<?=base_url('onlinetest/viewmyresult')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;查看结果</a>
+                <a href="<?=base_url('index.php/onlinetest/viewmyresult')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;查看结果</a>
                         </div>
                         
                         <div class="col-xs-8 hidden" id="div_tips_not_select">
@@ -159,7 +159,7 @@
 </div>
 
 <div class="modal-footer">
-    <a class="pull-left" href="javascript:void(0);">无线软件日</a>
+    <a class="pull-left" href="javascript:void(0);">上研软件风云汇</a>
     <a class="brand" href="javascript:void(0);">疯狂摇一摇</a>
 </div>
 
@@ -168,7 +168,7 @@
 function recordscore(is_right, questionid)
 {
     $.ajax({
-      url: "<?=base_url('onlinetest/ajax_record_score')?>",
+      url: "<?=base_url('index.php/onlinetest/ajax_record_score')?>",
 
       type: 'POST',
 
@@ -181,7 +181,6 @@ function recordscore(is_right, questionid)
       error: function(data,e){},
 
       success: function(result){
-        alert(result.success);
         
         if (result.success == 1)
         {

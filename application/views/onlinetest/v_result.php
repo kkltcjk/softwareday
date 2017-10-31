@@ -58,7 +58,7 @@
             WeixinJSBridge.call('hideOptionMenu');
         });
     </script>
-    <title>无线软件日</title>
+    <title>上研软件风云汇</title>
 </head>
 <body>
 <div class="navbar navbar-inner ">
@@ -82,7 +82,7 @@ function getgift(openid)
 function do_getgift(openid)
 {
     $.ajax({
-      url: "<?=base_url('onlinetest/ajax_get_gift/')?>",
+      url: "<?=base_url('index.php/onlinetest/ajax_get_gift/')?>",
 
       type: 'POST',
 
@@ -180,7 +180,7 @@ function do_getgift(openid)
                             ?>
                             <div class="col-xs-2"></div>
                             <div class="col-xs-4 text-center" id="continueanswer1">
-                                 <a href="<?=base_url('onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;继续答题</a>
+                                 <a href="<?=base_url('index.php/onlinetest/test')?>?openid=<?=$openid?>"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-forward"></i>&nbsp;继续答题</a>
                             </div>
                             <div class="col-xs-4 text-center" id="continueanswer2">
                                 <a href="javascript:getgift('<?=$user_openid?>')"  class="btn btn-primary center-block"><i class="glyphicon glyphicon glyphicon-saved"></i>&nbsp;确认领奖</a>
@@ -207,16 +207,6 @@ function do_getgift(openid)
                     </div>
                 </li>
             </div>
-            <div id="div_analysis_body_block"><center>奖项设置：<br>
-        正确率80%以上，且 <br>
-答对3题，奖励手机支架懒人托一个，  价值8元 <br>
-答对11题，奖励精美束缚绳背包一个，价值15元 <br>
-答对21题，奖励精美运动水杯一只，  价值25元 <br>
-答对41题，奖励精美运动臂包一个，  价值45元 <br>
-答对61题，奖励精美T恤衫一件，价值60元 <br>
-答对81题，奖励大礼包一个(以上礼品全套) <br>
-答对120题，奖励终极通关礼品--无线鼠标 <br>
-</center><div/>
             <!-- <div id="div_analysis_body_block" class="hidden">
                 <p>
                 </p><ul class="list-group">
@@ -249,7 +239,7 @@ function do_getgift(openid)
 </div>
 
 <div class="modal-footer">
-    <a class="pull-left" href="javascript:void(0);">无线软件日</a><a class="brand" href="javascript:void(0);">疯狂摇一摇</a>
+    <a class="pull-left" href="javascript:void(0);">上研软件风云汇</a><a class="brand" href="javascript:void(0);">疯狂摇一摇</a>
 </div>
 
 <script>

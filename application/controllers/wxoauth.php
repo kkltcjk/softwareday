@@ -24,7 +24,7 @@ class Wxoauth extends CI_Controller {
 		
 		if($openid)
 		{
-			redirect($site_url."onlinetest/test?openid=".$openid);
+			redirect($site_url."index.php/onlinetest/test?openid=".$openid);
 			// redirect($site_url);
 		}
 		else
@@ -48,7 +48,7 @@ class Wxoauth extends CI_Controller {
 						$openid = $token['openid'];
 	            				$this->session->set_userdata('user_openid', $openid);
 	            				$this->m_account->add_user($openid);
-						redirect($site_url."onlinetest/test?openid=".$openid);
+						redirect($site_url."index.php/onlinetest/test?openid=".$openid);
 						// redirect($site_url);
 					}
 				}
@@ -57,7 +57,7 @@ class Wxoauth extends CI_Controller {
 			}
 			else
 			{
-				$code_url = self::API_CODE_GET."appid=".self::APPID."&redirect_uri="."http%3A%2F%2Flru64.cn%2Fwxoauth%2Findex"."&response_type=code&scope=".self::SCOPE."&state=1#wechat_redirect";
+				$code_url = self::API_CODE_GET."appid=".self::APPID."&redirect_uri="."http%3A%2F%2Flru64.cn%2Findex%2Ephp%2Fwxoauth%2Findex"."&response_type=code&scope=".self::SCOPE."&state=1#wechat_redirect";
 
 				redirect($code_url);
 			}

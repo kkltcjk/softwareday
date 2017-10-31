@@ -68,7 +68,7 @@ class m_onlinetest extends CI_Model {
 
     function _getinrandonquestion($openid)
     {
-        $max_question_id = 142;
+        $max_question_id = 75;
         $id = $this->_getnorepeatedrandom($max_question_id, $openid);
         // $ran_arr = range(1, $max_question_id);
         // $ran_index = 0;
